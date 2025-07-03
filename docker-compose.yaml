@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  nginx:
+    build: ./nginx
+    container_name: nginx_proxy
+    ports:
+      - "80:80"
+    depends_on:
+      - django
+      - fastapi
+
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=shortener_db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    container_name: postgres_db
+    ports:
+      - "5432:5432"
+
+  django:
+    build: .
+    container_name: django_server
+    command: python3 manage.py runserver 0.0.0.0:8001
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+
+  fastapi:
+    build: ./fastapi_server
+    container_name: fastapi_server
+    command: uvicorn fastapi_server.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

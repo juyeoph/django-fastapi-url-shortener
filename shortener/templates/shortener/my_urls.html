@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My URLs</title>
+    <style>
+        body { font-family: sans-serif; padding: 2em; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>{{ request.user.username }}'s URLs</h1>
+    <hr>
+
+    <h2>Create a new Short URL</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            <label for="id_original_url">Original url:</label>
+            {{ form.original_url }}
+        </p>
+        <button type="submit">Shorten!</button>
+    </form>
+    <hr>
+    <h3>My URL List</h3>
+    {% if url_list %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Short Code (Link)</th>
+                    <th>Original URL</th>
+                    <th>Clicks</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for url in url_list %}
+                    <tr>
+                        <td>
+                            <a href="http://127.0.0.1:8000/{{ url.short_code }}" target="_blank">
+                                http://127.0.0.1:8000/{{ url.short_code }}
+                            </a>
+                        </td>
+                        <td>{{ url.original_url }}</td>
+                        <td>{{ url.click_count }}</td>
+                        <td>{{ url.created_at|date:"Y-m-d H:i" }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You haven't created any URLs yet.</p>
+    {% endif %}
+
+</body>
+</html>
