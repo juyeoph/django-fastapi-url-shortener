@@ -2,3 +2,5 @@
 
 django
 psycopg2-binary
+pytest             # ★★★ 1. pytest 추가
+pytest-django      # ★★★ 2. pytest-django 추가
