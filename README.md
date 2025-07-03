@@ -2,7 +2,7 @@
 
 Python(Django, FastAPI)과 Docker 기반의 마이크로서비스 아키텍처(MSA)를 학습하고 구현한 URL 단축기 프로젝트입니다.
 
-## 🚀 프로젝트 개요 (Project Overview)
+## 프로젝트 개요 (Project Overview)
 
 이 프로젝트는 현대적인 웹 애플리케이션 아키텍처를 학습하기 위해 시작되었습니다. 각기 다른 강점을 가진 두 개의 Python 웹 프레임워크를 조합하고, 전체 시스템을 Docker를 통해 컨테이너화하여 관리합니다.
 
@@ -12,7 +12,7 @@ Python(Django, FastAPI)과 Docker 기반의 마이크로서비스 아키텍처(M
 - **PostgreSQL:** 모든 데이터를 안정적으로 저장하고, 두 서비스가 공유하는 중앙 데이터베이스 역할을 합니다.
 - **Docker & Docker Compose:** 위 모든 서비스를 격리된 환경에서 일관성 있게 실행하고 관리합니다.
 
-## 🏛️ 시스템 아키텍처 (Architecture)
+## 시스템 아키텍처 (Architecture)
 
 ```mermaid
 graph TD
@@ -23,7 +23,7 @@ graph TD
     D -- "데이터 읽기/쓰기" --> E;
 ```
 
-## ✨ 주요 기능 (Features)
+## 주요 기능 (Features)
 
 - **사용자 인증:** 회원가입, 로그인, 로그아웃 기능
 - **URL 단축:** 로그인한 사용자는 자신만의 단축 URL 생성 가능
@@ -87,7 +87,7 @@ graph TD
 docker-compose down
 ```
 
-## 📝 앞으로의 개선 과제 (To-Do)
+## 앞으로의 개선 과제 (To-Do)
 
 - [ ] API 인증(JWT)을 통한 보안 강화
 - [ ] 생성된 단축 URL 수정 및 삭제 기능 구현
