@@ -1,0 +1,25 @@
+# .github/workflows/ci.yml
+
+name: Django CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Run Docker Compose
+      run: docker-compose up -d
+
+    - name: Wait for services
+      run: sleep 10
+
+    - name: Run tests
+      run: docker-compose exec django pytest
