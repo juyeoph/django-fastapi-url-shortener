@@ -32,13 +32,13 @@ graph TD
 - **클릭 카운트:** 단축 URL이 클릭될 때마다 횟수 증가
 - **관리자 페이지:** Django Admin을 통한 전체 데이터 관리
 
-## 🛠️ 기술 스택 (Tech Stack)
+## 기술 스택 (Tech Stack)
 
 - **Backend:** Python, Django, FastAPI
 - **Database:** PostgreSQL
 - **Infrastructure:** Docker, Docker Compose, Nginx
 
-## 🏁 시작하기 (Getting Started)
+## 시작하기 (Getting Started)
 
 이 프로젝트를 로컬 환경에서 실행하는 방법입니다.
 
