@@ -1,7 +1,7 @@
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, HTTPException, Response, status
 from fastapi.responses import RedirectResponse
-from sqlalchemy import create_engine, Column, String, Integer, DateTime
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 DATABASE_URL = "postgresql://user:password@db:5432/shortener_db"
@@ -15,14 +15,14 @@ class URL(Base):
     id = Column(Integer, primary_key=True, index=True)
     original_url = Column(String, index=True)
     short_code = Column(String, unique=True, index=True)
-    created_at = Column(DateTime)
     click_count = Column(Integer, default=0)
+    owner_id = Column(Integer)
 
 app = FastAPI()
 
 @app.get("/favicon.ico", include_in_schema=False)
-async def favicon():
-    return
+def favicon():
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 @app.get("/{short_code}")
 def redirect_to_original_url(short_code: str):

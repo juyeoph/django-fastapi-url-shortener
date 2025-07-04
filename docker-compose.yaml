@@ -19,8 +19,6 @@ services:
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=password
     container_name: postgres_db
-    ports:
-      - "5432:5432"
 
   django:
     build: .
