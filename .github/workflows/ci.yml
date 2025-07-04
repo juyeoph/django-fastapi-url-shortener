@@ -22,7 +22,7 @@ jobs:
       run: sleep 10
 
     - name: Run Django tests
-      run: docker compose exec django pytest
+      run: docker compose exec django pytest shortener
 
     - name: Run FastAPI tests
       run: docker compose exec fastapi pytest fastapi_server
